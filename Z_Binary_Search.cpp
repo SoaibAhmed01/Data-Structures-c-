@@ -29,27 +29,41 @@ using namespace std;
 
 
 //Driver code
-int solve()
+void solve()
 {
-    ll n,q;  cin>>n>>q;
-    vi a(n),pre(n);
+    int n,q;        cin>>n>>q;
+    vi a(n);
     for(int i=0;i<n;i++)cin>>a[i];
-    for(int i=0;i<n;i++)
-    {
-        pre[i]=a[i]+pre[i-1];
-    }
+    sort(a.begin(),a.end());
     while (q--)
     {
-        ll l,r;
-        cin>>l>>r;
-        ll sum=0;
-        if(l==0)sum=pre[r];
-        else sum=pre[r]+pre[l-1];
-        cout<<sum<<endl;
+        int x;  cin>>x;
+        int low=0,high=n-1;
+        bool flag=false;
+        while (low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if(a[mid]==x)
+            {
+                flag=true;
+                break;
+            }
+            if(x>a[mid])
+            {
+                
+                low=mid+1;
+            }
+            else if(x<a[mid])
+            {
+                high=mid-1;
+            }
+
+        }
+        
+        if(flag==true)cout<<"found"<<nl;
+        else cout<<"not found"<<nl;
     }
     
-    
-
 
 }
 

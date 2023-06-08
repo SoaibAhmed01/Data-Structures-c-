@@ -29,26 +29,23 @@ using namespace std;
 
 
 //Driver code
-int solve()
+void solve()
 {
-    ll n,q;  cin>>n>>q;
-    vi a(n),pre(n);
+    ll n;     cin>>n;
+    vii a(n);
     for(int i=0;i<n;i++)cin>>a[i];
-    for(int i=0;i<n;i++)
-    {
-        pre[i]=a[i]+pre[i-1];
-    }
-    while (q--)
-    {
-        ll l,r;
-        cin>>l>>r;
-        ll sum=0;
-        if(l==0)sum=pre[r];
-        else sum=pre[r]+pre[l-1];
-        cout<<sum<<endl;
-    }
-    
-    
+     bool flag = true;
+
+        for(int i=0; i<n-1; i++)
+        {
+            if(a[i]>a[i+1])
+            {
+                flag = false;
+                break;
+            }
+        }
+        if(!flag) no;
+       else yes;
 
 
 }
@@ -56,7 +53,12 @@ int solve()
 int main()
 {
     Faster;
-    solve();
+    int tc; cin>>tc;
+    while (tc--)
+    {
+        solve();
+    }
+    
     return 0;
 }
 

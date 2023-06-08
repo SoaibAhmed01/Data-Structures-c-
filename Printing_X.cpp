@@ -31,24 +31,23 @@ using namespace std;
 //Driver code
 int solve()
 {
-    ll n,q;  cin>>n>>q;
-    vi a(n),pre(n);
-    for(int i=0;i<n;i++)cin>>a[i];
-    for(int i=0;i<n;i++)
-    {
-        pre[i]=a[i]+pre[i-1];
-    }
-    while (q--)
-    {
-        ll l,r;
-        cin>>l>>r;
-        ll sum=0;
-        if(l==0)sum=pre[r];
-        else sum=pre[r]+pre[l-1];
-        cout<<sum<<endl;
-    }
-    
-    
+    int n;
+        cin >> n;
+
+        for(int i=0; i<n; i++)
+        {
+            for(int j=0; j<n; j++)
+            {
+                if(n/2==i and n/2==j and i==n/2)
+                    cout << "X";
+                else if(i==j)
+                    cout << "\\" ;
+                else if(n-j-1==i)
+                    cout << "/";
+                else cout << " ";
+            }
+            cout << nl;
+}
 
 
 }
