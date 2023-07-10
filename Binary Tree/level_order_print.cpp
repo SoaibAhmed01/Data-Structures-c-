@@ -20,6 +20,27 @@ class Node
     }    
 
 };
+void level_order(Node* root)
+
+{
+    if(root==NULL)
+    {
+        cout<<"NULL"<<endl;
+        return;
+    }
+    queue<Node*>q;
+    q.push(root);
+    while(!q.empty())
+    {
+        Node *f=q.front();
+        q.pop();
+
+        cout<<f->val<<" ";
+
+        if(f->left)q.push(f->left);
+        if(f->right)q.push(f->right);
+    }
+}
 
 
 int main()
@@ -35,7 +56,7 @@ int main()
     Node *h= new Node(90);
     Node *i= new Node(100);
 
-    //conection create
+    //conection creat
     root->left=a;
     root->right=b;
     a->left=c;
@@ -45,5 +66,7 @@ int main()
     b->right=d;
     d->left=f;
     d->right=g;
+
+    level_order(root);
     return 0;
 }
